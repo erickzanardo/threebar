@@ -12,7 +12,7 @@ npm install -g threebar
 
 Create a folder `.threebar` on your home, that folder will contain the files that you will use to create your bar.
 
-It must contain a file named `.pattern`, that file containes de pattern used to organize your status bar and all the files that will update each part of the status. See an example below.
+It must contain a file named `.pattern`, that file contains the pattern used to organize your status bar and all the files that will update each part of the status. See an example below.
 
 ```javascript
 // .pattern
