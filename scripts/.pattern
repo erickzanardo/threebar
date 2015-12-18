@@ -1,1 +1,1 @@
-{cpuload} | {battery} | {memory} | {datetime}
+{diskusage} | {cpuload} | {battery} | {memory} | {datetime}
