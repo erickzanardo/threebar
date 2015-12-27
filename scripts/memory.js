@@ -1,19 +1,24 @@
-var home = require("./homepath");
-var path = require("path");
-var childProcess = require("child_process");
-
-var commandPath = path.join(home(), ".threebar/bfmemusage");
+var TOTAL_MEMORY_CMD = "free -m | awk 'NR==2{print $2}'",
+    USED_MEMORY_CMD = "free -m | awk 'NR==2{print $3}'",
+    MEMORY_ICON = "\uf080",
+    home = require("./homepath"),
+    path = require("path"),
+    cp = require("child_process"),
+    exec = (cmd) => cp.execSync(cmd).toString().replace("\n", ""),
+    totalMemory = () => exec(TOTAL_MEMORY_CMD),
+    usedMemory = () => exec(USED_MEMORY_CMD);
 
 module.exports = function(update) {
   var updateMemory = () => {
-    var command = childProcess.spawn(commandPath);
-    command.stdout.on("data", function(data) {
-      update("memory", [
-        "\uf078",
-        data.toString()
-      ].join(" "));
-    });
-    setTimeout(updateMemory, 60000);
+    update("memory", [
+      MEMORY_ICON,
+      [
+        totalMemory(),
+        "/",
+        usedMemory()
+      ].join("")
+    ].join(" "));
+    setTimeout(updateMemory, 12000);
   };
   updateMemory();
 };

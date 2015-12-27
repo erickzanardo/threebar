@@ -12,7 +12,7 @@ module.exports = function(update) {
         year = d.getFullYear();
 
     update("datetime", [
-        "\uf06c",
+        "\uf073",
         [
           day,
           month,
