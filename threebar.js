@@ -50,5 +50,4 @@ fs.readFile(patternPath, (err, data) => {
   });
 });
 
-// Wait FOREVERRRRRRRRRRRRRRRRRRRRRR
-setInterval(function(){}, Math.POSITIVE_INFINITY);
+process.stdin.resume();
